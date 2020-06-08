@@ -1,0 +1,17 @@
+{
+  "name": "npm-template",
+  "version": "1.0.0",
+  "description": "template for npm",
+  "main": "index.js",
+  "scripts": {
+    "start": "pm2 start index.js --name=npm -- --port=3000",
+    "stop": "pm2 stop npm",
+    "restart": "pm2 restart npm"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "@flowx/npm": "^1.0.1"
+  }
+}
