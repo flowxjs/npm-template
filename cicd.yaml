@@ -1,0 +1,27 @@
+deploy:
+  meta:
+    name: npm-registry
+    owner: xxxxxx
+  deployment:
+    port: 
+      - 8080
+    health:
+      active: false
+    nfsLog: false
+    mount:
+      volumes:
+        - name: data
+          pvcName: adaptive-data
+      volumeMounts:
+        - volumeName: data
+          mountPath: /usr/app/npm/packages
+          subPath: npm-registry
+  ingress:
+    domainnames:
+      - namespace: dev
+        value: alpha-npm-registry.aidigger.com
+      - namespace: production
+        value: npm.aidigger.com
+    path: /
+    options:
+      - 'ingress.kubernetes.io/proxy-body-size: "8m"'
